@@ -1,0 +1,16 @@
+package com.userInterface;
+
+import com.beanclass.Bean1Class;
+import com.beanclass.Bean2Class;
+import com.beanclass.Bean3Class;
+import com.beanclass.BeanClass;
+
+public interface UserInterface {
+	
+	public int Register(BeanClass cd);
+	
+	public boolean Login(BeanClass bean);
+	
+	
+	
+}
