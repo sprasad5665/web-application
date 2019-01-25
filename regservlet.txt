@@ -1,0 +1,76 @@
+package com.sevlet;
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.beanclass.BeanClass;
+
+import com.implementation.JImpl;
+import com.userInterface.UserInterface;
+
+/**
+ * Servlet implementation class Sevlet
+ */
+@WebServlet("/RegisterationServlet")
+public class RegisterationServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public RegisterationServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		String username=request.getParameter("username");		
+		String password=request.getParameter("password");
+		String confirmpassword=request.getParameter("confirmpassword");
+		String Email=request.getParameter("email");
+		String Date=request.getParameter("date");
+		String Number=request.getParameter("number");
+		
+		
+		BeanClass bc=new BeanClass();
+		
+		
+		bc.setUsername(username);
+		bc.setPassword(password);
+		bc.setConfirmpassword(confirmpassword);
+		bc.setEmail(Email);
+		bc.setDate(Date);
+		bc.setNumber(Number);
+		
+		
+		UserInterface u=new JImpl();
+		int i=u.Register(bc);
+		
+		
+		if(i==1){
+			response.sendRedirect("Login.jsp");	
+		}
+		else{
+			response.sendRedirect("RegisterError.jsp");
+		}
+		
+		
+		
+	}
+
+}
